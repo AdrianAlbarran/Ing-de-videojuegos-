@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IMoveComponent
 {
-    public void Move(float deltaTime);
+    public void Move(GameObject gameObject, float deltaTime);
 }
