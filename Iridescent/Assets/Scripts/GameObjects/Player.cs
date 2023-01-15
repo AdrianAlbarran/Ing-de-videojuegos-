@@ -6,6 +6,7 @@ public class Player : GObject
     {
         rb = GetComponent<Rigidbody2D>();
         moveComponent = new PlayerMoveComponent(this);
+        player = this;
     }
 
     // Update is called once per frame
