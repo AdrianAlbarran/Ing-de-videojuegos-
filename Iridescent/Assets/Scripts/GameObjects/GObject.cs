@@ -10,11 +10,6 @@ public abstract class GObject: MonoBehaviour
     [HideInInspector]
     public Player player;
 
-    public void Start()
-    {
-        player = FindObjectOfType<Player>();
-    }
-
     public void Move(GameObject gameObject, float deltaTime)
     {
        
