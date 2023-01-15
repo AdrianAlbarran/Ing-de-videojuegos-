@@ -6,3 +6,5 @@ public interface IAttackComponent
 {
     public void Attack(GameObject gameObject);
 }
+
+
