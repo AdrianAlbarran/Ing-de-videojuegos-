@@ -6,6 +6,12 @@ public abstract class GObject: MonoBehaviour
 {
     public Rigidbody2D rb;
     public IMoveComponent moveComponent;
+    public Player player;
+
+    public void Start()
+    {
+        player = FindObjectOfType<Player>();
+    }
 
     public void Move(GameObject gameObject, float deltaTime)
     {

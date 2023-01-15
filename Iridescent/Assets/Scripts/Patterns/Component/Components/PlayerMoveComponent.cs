@@ -14,7 +14,6 @@ public class PlayerMoveComponent : IMoveComponent
     }
     public void Move(GameObject gameObject, float deltaTime)
     {
-        Debug.Log(rb);
         x = Input.GetAxis("Horizontal");
         y = Input.GetAxis("Vertical");
         Vector2 moveDelta = new Vector2(x, y);
