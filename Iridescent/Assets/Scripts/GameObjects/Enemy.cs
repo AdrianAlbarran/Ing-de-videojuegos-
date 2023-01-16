@@ -6,8 +6,15 @@ public class Enemy : GObject
 {
     [SerializeField]
     private int moveSpeed;
+    [SerializeField]
+    private int hp;
+    [SerializeField]
+    private int dmg;
+    [SerializeField]
+    private int attackSpeed;
+    private int drop;
 
-    private void Start()
+    protected void Start()
     {
         player = FindObjectOfType<Player>();
         rb = GetComponent<Rigidbody2D>();
