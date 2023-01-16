@@ -9177,6 +9177,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   player: {fileID: 0}
+  attackCD: 5
+  attackCooldown: 5
+  onAttack: 0
 --- !u!212 &1892369686
 SpriteRenderer:
   m_ObjectHideFlags: 0
