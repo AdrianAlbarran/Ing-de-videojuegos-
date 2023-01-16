@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -68,9 +68,9 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -4417,14 +4417,14 @@ TextureImporter:
       Demon_51: 191312823
       Demon_114: 581702648
       Demon_133: -2131610025
-      Demon_154: -1173899657
-      Demon_18: 1486837886
+      Demon_188: 1700954454
+      Demon_197: 1985449430
       Demon_37: 1632758681
       Demon_28: -1959142181
-      Demon_197: 1985449430
       Demon_52: -60981404
-      Demon_188: 1700954454
+      Demon_154: -1173899657
       Demon_81: -53358894
+      Demon_18: 1486837886
       Demon_189: 1434959670
       Demon_76: -1721257999
       Demon_139: -1859816067
@@ -4539,8 +4539,8 @@ TextureImporter:
       Demon_128: 896092700
       Demon_173: 1491135894
       Demon_120: -1998956864
-      Demon_22: -710711745
       Demon_162: -859607606
+      Demon_22: -710711745
       Demon_168: -654661178
       Demon_194: 29539958
       Demon_106: 853278290
