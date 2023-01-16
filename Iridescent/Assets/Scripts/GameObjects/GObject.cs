@@ -7,6 +7,7 @@ public abstract class GObject: MonoBehaviour
     [HideInInspector]
     public Rigidbody2D rb;
     public IMoveComponent moveComponent;
+    public IDieComponent dieComponent;
     [HideInInspector]
     public Player player;
     [HideInInspector]
@@ -15,6 +16,11 @@ public abstract class GObject: MonoBehaviour
     public void Move(GameObject gameObject, float deltaTime)
     {
         moveComponent?.Move(gameObject, deltaTime);
+    }
+
+    public void Die(GameObject gameObject)
+    {
+        dieComponent?.Die(gameObject);
     }
 
 }

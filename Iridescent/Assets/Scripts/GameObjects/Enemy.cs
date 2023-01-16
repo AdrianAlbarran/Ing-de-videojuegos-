@@ -19,11 +19,13 @@ public class Enemy : GObject
         player = FindObjectOfType<Player>();
         rb = GetComponent<Rigidbody2D>();
         moveComponent = new EnemyMoveComponent(this, moveSpeed);
+        dieComponent = new EnemyDieComponent();
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
         Move(this.gameObject, Time.fixedDeltaTime);
+        if (hp <= 0) Die(this.gameObject);
     }
 }

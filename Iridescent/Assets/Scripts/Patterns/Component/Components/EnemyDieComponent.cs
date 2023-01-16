@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyDieComponent : IDieComponent
 {
-    
-    public EnemyDieComponent(GameObject gameObject)
+    public EnemyDieComponent()
     {
        
     }
