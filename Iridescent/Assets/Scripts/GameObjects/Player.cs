@@ -16,6 +16,7 @@ public class Player : GObject
         moveComponent = new PlayerMoveComponent(this);
         player = this;
         animator = GetComponent<Animator>();
+        recieveAttackComponent = new RecieveAttackComponent(this);
     }
 
     // Update is called once per frame
@@ -26,7 +27,8 @@ public class Player : GObject
         if (movement_vector != Vector2.zero)
         {
             directionFacing = movement_vector;
-        }        animator.SetFloat("Vertical", Input.GetAxisRaw("Vertical"));
+        }        
+        animator.SetFloat("Vertical", Input.GetAxisRaw("Vertical"));
         animator.SetFloat("Horizontal", Input.GetAxisRaw("Horizontal"));
     }
 
@@ -60,7 +62,7 @@ public class Player : GObject
             RaycastHit2D[] hit = new RaycastHit2D[10];
             for (int i = 0; i < Physics2D.Raycast(transform.position, directionFacing, filtro, hit, 10f); i++)
             {
-                hit[i].transform.GetComponent<Enemy>();
+                hit[i].transform.GetComponent<Enemy>().RecieveAttack(dmg);
             }
         }
         if (Physics2D.Raycast(transform.position, diagonalUp, 10f))
@@ -68,7 +70,7 @@ public class Player : GObject
             RaycastHit2D[] hit = new RaycastHit2D[10];
             for (int i = 0; i < Physics2D.Raycast(transform.position, diagonalUp, filtro, hit, 10f); i++)
             {
-                hit[i].transform.GetComponent<Enemy>();
+                hit[i].transform.GetComponent<Enemy>().RecieveAttack(dmg);
             }
         }
         if (Physics2D.Raycast(transform.position, diagonalDown, 10f))
@@ -76,7 +78,7 @@ public class Player : GObject
             RaycastHit2D[] hit = new RaycastHit2D[10];
             for (int i = 0; i < Physics2D.Raycast(transform.position, diagonalDown, filtro, hit, 10f); i++)
             {
-                hit[i].transform.GetComponent<Enemy>();
+                hit[i].transform.GetComponent<Enemy>().RecieveAttack(dmg);
             }
         }
     }

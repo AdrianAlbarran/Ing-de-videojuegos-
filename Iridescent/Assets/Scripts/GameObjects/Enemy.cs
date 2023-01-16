@@ -6,8 +6,7 @@ public class Enemy : GObject
 {
     [SerializeField]
     private int moveSpeed;
-    [SerializeField]
-    private int dmg;
+
     [SerializeField]
     private int attackSpeed;
     private int drop;
@@ -19,6 +18,7 @@ public class Enemy : GObject
         rb = GetComponent<Rigidbody2D>();
         moveComponent = new EnemyMoveComponent(this, moveSpeed);
         dieComponent = new EnemyDieComponent();
+        recieveAttackComponent = new RecieveAttackComponent(this);
     }
 
     // Update is called once per frame
@@ -28,15 +28,4 @@ public class Enemy : GObject
         if (hp <= 0) Die(this.gameObject);
     }
 
-    public void recieveAttack(int dmg)
-    {
-        if (hp - dmg <= 0)
-        {
-            hp = 0;
-        }
-        else
-        {
-            hp -= dmg;
-        }
-    }
 }

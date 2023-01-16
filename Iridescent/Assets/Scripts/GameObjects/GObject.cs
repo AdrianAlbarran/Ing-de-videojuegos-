@@ -1,19 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GObject: MonoBehaviour
+public abstract class GObject : MonoBehaviour
 {
     [HideInInspector]
     public Rigidbody2D rb;
+
     public IMoveComponent moveComponent;
     public IDieComponent dieComponent;
+    public IRecieveAttackComponent recieveAttackComponent;
+
     [HideInInspector]
     public Player player;
+
     [HideInInspector]
     public float attackCD;
+
     [SerializeField]
     protected int hp;
+
+    [SerializeField]
+    protected int dmg;
+
+    public void setHP(int _hp)
+    {
+        hp = _hp;
+    }
+
+    public int getHp()
+    {
+        return hp;
+    }
+
 
     public void Move(GameObject gameObject, float deltaTime)
     {
@@ -24,5 +41,8 @@ public abstract class GObject: MonoBehaviour
     {
         dieComponent?.Die(gameObject);
     }
-
+    public void RecieveAttack(int dmg)
+    {
+        recieveAttackComponent?.RecieveAttack(dmg);
+    }
 }
