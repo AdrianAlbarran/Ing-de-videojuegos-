@@ -12,6 +12,8 @@ public abstract class GObject: MonoBehaviour
     public Player player;
     [HideInInspector]
     public float attackCD;
+    [SerializeField]
+    protected int hp;
 
     public void Move(GameObject gameObject, float deltaTime)
     {

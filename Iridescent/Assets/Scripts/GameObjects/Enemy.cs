@@ -7,13 +7,12 @@ public class Enemy : GObject
     [SerializeField]
     private int moveSpeed;
     [SerializeField]
-    private int hp;
-    [SerializeField]
     private int dmg;
     [SerializeField]
     private int attackSpeed;
     private int drop;
 
+    
     protected void Start()
     {
         player = FindObjectOfType<Player>();
@@ -27,5 +26,17 @@ public class Enemy : GObject
     {
         Move(this.gameObject, Time.fixedDeltaTime);
         if (hp <= 0) Die(this.gameObject);
+    }
+
+    public void recieveAttack(int dmg)
+    {
+        if (hp - dmg <= 0)
+        {
+            hp = 0;
+        }
+        else
+        {
+            hp -= dmg;
+        }
     }
 }
