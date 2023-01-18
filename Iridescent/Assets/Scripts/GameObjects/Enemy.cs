@@ -20,6 +20,13 @@ public class Enemy : GObject
         dieComponent = new EnemyDieComponent();
         recieveAttackComponent = new RecieveAttackComponent(this);
         drops = GameObject.Find("DropsManager").GetComponent<PrototypeTester>();
+        rb = gameObject.AddComponent<Rigidbody2D>();
+        rb.gravityScale = 0;
+        rb.mass = 1;
+        rb.drag = 100;
+        rb.angularDrag = 100;
+        rb.freezeRotation = true;
+        gameObject.AddComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame

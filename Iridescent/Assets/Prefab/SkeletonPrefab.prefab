@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8930930207448882631}
   m_Layer: 7
   m_Name: SkeletonPrefab
-  m_TagString: Untagged
+  m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   player: {fileID: 0}
   attackCD: 0
-  moveSpeed: 10
   hp: 12
   dmg: 15
+  moveSpeed: 10
   attackSpeed: 13
