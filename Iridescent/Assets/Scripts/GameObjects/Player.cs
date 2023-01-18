@@ -37,8 +37,15 @@ public class Player : GObject
     {
         if (Input.GetKey(KeyCode.Space) && !onAttack)
         {
+            animator.SetBool("Attack", true);
+            Debug.Log("attack");
             StartCoroutine(attack());
         }
+    }
+
+    protected void attackChange()
+    {
+        animator.SetBool("Attack", false);
     }
 
     protected IEnumerator attack()
