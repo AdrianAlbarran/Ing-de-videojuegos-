@@ -13,7 +13,7 @@ public class RecieveAttackComponent : IRecieveAttackComponent
     {
        if(gObject.getHp()-dmg<=0)
         {
-            gObject.setHP(0);
+            gObject.setHP(dmg);
         }
         else
         {
