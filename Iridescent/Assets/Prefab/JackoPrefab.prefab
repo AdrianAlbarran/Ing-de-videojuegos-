@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1710414228619481560}
   m_Layer: 7
   m_Name: JackoPrefab
-  m_TagString: Untagged
+  m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   player: {fileID: 0}
   attackCD: 0
-  moveSpeed: 0
   hp: 0
   dmg: 0
+  moveSpeed: 0
   attackSpeed: 0
