@@ -9,7 +9,7 @@ public class Enemy : GObject
 
     [SerializeField]
     private int attackSpeed;
-    private int drop;
+    private PrototypeTester drops;
 
     
     protected void Start()
@@ -19,13 +19,18 @@ public class Enemy : GObject
         moveComponent = new EnemyMoveComponent(this, moveSpeed);
         dieComponent = new EnemyDieComponent();
         recieveAttackComponent = new RecieveAttackComponent(this);
+        drops = GameObject.Find("DropsManager").GetComponent<PrototypeTester>();
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
         Move(this.gameObject, Time.fixedDeltaTime);
-        if (hp <= 0) Die(this.gameObject);
+        if (hp <= 0)
+        {
+            drops.AddDrop(this.transform.position);
+            Die(this.gameObject);
+        }
     }
 
 }

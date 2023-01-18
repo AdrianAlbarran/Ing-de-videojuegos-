@@ -12,5 +12,13 @@ namespace Assets.Scripts.GameObjects.Enemies
             base.Start();
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                hp = 0;
+            }
+        }
+
     }
 }
