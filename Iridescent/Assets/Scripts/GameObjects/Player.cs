@@ -1,12 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : GObject
 {
     public float attackSpeed;
     public bool onAttack;
-    public List<GameObject> enemiesHit;
+
     private Vector2 directionFacing;
 
     private Animator animator;
@@ -51,61 +50,35 @@ public class Player : GObject
 
     public void RayAttack()
     {
-        enemiesHit.Clear();
-        Vector2 diagonalUp = new Vector2(0,0);
-        Vector2 diagonalDown = new Vector2(0, 0);
-        if (directionFacing.y == 0)
-        {
-            diagonalUp = new Vector2(directionFacing.x, directionFacing.y + 1);
-            diagonalDown = new Vector2(directionFacing.x, directionFacing.y - 1);
-        }
-        else if (directionFacing.x == 0)
-        {
-            diagonalUp = new Vector2(directionFacing.x + 1, directionFacing.y);
-            diagonalDown = new Vector2(directionFacing.x - 1, directionFacing.y);
-        }
-        else if ((directionFacing.x == 1 || directionFacing.x == -1) && (directionFacing.y == 1||directionFacing.y == -1)) { }
-        {
-            directionFacing.y = 0;
-            diagonalUp = new Vector2(directionFacing.x, directionFacing.y + 1);
-            diagonalDown = new Vector2(directionFacing.x, directionFacing.y - 1); ;
-        }
-
+        Vector2 diagonalUp = new Vector2(directionFacing.x, directionFacing.y + 1);
+        Vector2 diagonalDown = new Vector2(directionFacing.x, directionFacing.y - 1);
 
         ContactFilter2D filtro = new ContactFilter2D();
         filtro.useLayerMask = true;
-        filtro.layerMask = 1 << LayerMask.NameToLayer("Enemies");
-        if (Physics2D.Raycast(transform.position, directionFacing, 1))
+        filtro.layerMask = 1 << LayerMask.NameToLayer("Enemy");
+
+        if (Physics2D.Raycast(transform.position, directionFacing, 10f))
         {
             RaycastHit2D[] hit = new RaycastHit2D[10];
-            for (int i = 0; i < Physics2D.Raycast(transform.position, directionFacing, filtro, hit, 1); i++)
+            for (int i = 0; i < Physics2D.Raycast(transform.position, directionFacing, filtro, hit, 10f); i++)
             {
                 hit[i].transform.GetComponent<Enemy>().RecieveAttack(dmg);
-                enemiesHit.Add(hit[i].transform.gameObject);
             }
         }
-        if (Physics2D.Raycast(transform.position, diagonalUp, 0.9f))
+        if (Physics2D.Raycast(transform.position, diagonalUp, 10f))
         {
             RaycastHit2D[] hit = new RaycastHit2D[10];
-            for (int i = 0; i < Physics2D.Raycast(transform.position, diagonalUp, filtro, hit, 0.9f); i++)
+            for (int i = 0; i < Physics2D.Raycast(transform.position, diagonalUp, filtro, hit, 10f); i++)
             {
-                if (!enemiesHit.Contains(hit[i].transform.gameObject))
-                {
-                    hit[i].transform.GetComponent<Enemy>().RecieveAttack(dmg);
-                    enemiesHit.Add(hit[i].transform.gameObject);
-                }
+                hit[i].transform.GetComponent<Enemy>().RecieveAttack(dmg);
             }
         }
-        if (Physics2D.Raycast(transform.position, diagonalDown, 0.9f))
+        if (Physics2D.Raycast(transform.position, diagonalDown, 10f))
         {
             RaycastHit2D[] hit = new RaycastHit2D[10];
-            for (int i = 0; i < Physics2D.Raycast(transform.position, diagonalDown, filtro, hit, 0.9f); i++)
+            for (int i = 0; i < Physics2D.Raycast(transform.position, diagonalDown, filtro, hit, 10f); i++)
             {
-                if (!enemiesHit.Contains(hit[i].transform.gameObject))
-                {
-                    hit[i].transform.GetComponent<Enemy>().RecieveAttack(dmg);
-                    enemiesHit.Add(hit[i].transform.gameObject);
-                }
+                hit[i].transform.GetComponent<Enemy>().RecieveAttack(dmg);
             }
         }
     }
