@@ -12,6 +12,8 @@ public class Enemy : GObject
 
     private bool recivedAttack;
 
+  
+
     
     protected void Start()
     {
@@ -50,5 +52,16 @@ public class Enemy : GObject
     {
         recivedAttack = value;
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Player" && !waitAttack)
+        {
+            StartCoroutine(attackCooldown());
+            collision.gameObject.GetComponent<Player>().RecieveAttack(dmg);
+        }
+    }
+
+
 
 }

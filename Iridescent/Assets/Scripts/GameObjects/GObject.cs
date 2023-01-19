@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class GObject : MonoBehaviour
@@ -10,6 +11,8 @@ public abstract class GObject : MonoBehaviour
     public IRecieveAttackComponent recieveAttackComponent;
 
     protected PauseMenu pauseMenu;
+
+    protected bool waitAttack;
 
     [HideInInspector]
     public Player player;
@@ -48,5 +51,13 @@ public abstract class GObject : MonoBehaviour
     public void RecieveAttack(int dmg)
     {
         recieveAttackComponent?.RecieveAttack(dmg);
+    }
+
+    protected IEnumerator attackCooldown()
+    {
+        waitAttack = true;
+        yield return new WaitForSeconds(0.5f);
+        waitAttack = false;
+       
     }
 }

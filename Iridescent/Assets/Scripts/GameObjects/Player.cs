@@ -14,6 +14,10 @@ public class Player : GObject,ISubject<int>
     private Animator animator;
 
     private int maxHP;
+    public int getMaxHp()
+    {
+        return maxHP;
+    }
 
     private int lastDir;
     private int soundObserver;
@@ -203,6 +207,15 @@ public class Player : GObject,ISubject<int>
         //        Debug.Log(collision);
         //    }
         //}
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.collider.tag=="Enemies" && !waitAttack)
+        {
+            StartCoroutine(attackCooldown());
+            soundObserver = 4;
+            NotifyObservers();
+        }
     }
 
 
