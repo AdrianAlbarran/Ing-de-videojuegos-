@@ -15,6 +15,7 @@ public class Player : GObject
 
     private int maxHP;
 
+    private int lastDir;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -38,16 +39,41 @@ public class Player : GObject
         }
         animator.SetFloat("Vertical", Input.GetAxisRaw("Vertical"));
         animator.SetFloat("Horizontal", Input.GetAxisRaw("Horizontal"));
+        changeLastDir();
     }
+
+
 
     public void Update()
     {
         if (Input.GetKey(KeyCode.Space) && !onAttack)
         {
             animator.SetBool("Attack", true);
-            //Debug.Log("attack");
-            StartCoroutine(attack());
         }
+    }
+
+    protected void changeLastDir()
+    {
+
+        // Ya lo siento por las ramificaciones, se que apestan
+
+        if (directionFacing.x == 1)
+        {
+            lastDir = 1;
+        }
+        else if (directionFacing.x == -1)
+        {
+            lastDir = 3;
+        }
+        else if (directionFacing.y == 1)
+        {
+            lastDir = 0;
+        }
+        else if (directionFacing.y == -1)
+        {
+            lastDir = 2;
+        } 
+        animator.SetInteger("LastDir", lastDir);
     }
 
     protected void attackChange()
@@ -55,7 +81,12 @@ public class Player : GObject
         animator.SetBool("Attack", false);
     }
 
-    protected IEnumerator attack()
+    protected void attack()
+    {
+        StartCoroutine(auxAttack());
+    }
+
+    protected IEnumerator auxAttack()
     {
         onAttack = true;
         RayAttack();
