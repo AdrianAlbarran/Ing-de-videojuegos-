@@ -9,7 +9,7 @@ public class Enemy : GObject
 
     [SerializeField]
     private int attackSpeed;
-    private PrototypeTester drops;
+    
 
     
     protected void Start()
@@ -35,7 +35,8 @@ public class Enemy : GObject
         Move(this.gameObject, Time.fixedDeltaTime);
         if (hp <= 0)
         {
-            drops.AddDrop(this.transform.position);
+            int random = Random.Range(1, 11);
+            if(random <4) drops.AddDrop(this.transform.position);
             Die(this.gameObject);
         }
     }

@@ -21,16 +21,23 @@ public abstract class AbstractDrop : IPrototypeDrop
     }
     public AbstractDrop(string type)
     {
-        Assert.IsTrue(type == "Damage");
+        Assert.IsTrue(type == "Damage" || type == "Health" || type == "AttackSpeed" || type == "MoveSpeed");
         switch (type)
         {
             case "Damage":
+                sprite = Resources.Load<Sprite>("weapon_sword_red");
+                break;
 
-                //string path = EditorUtility.OpenFolderPanel("Select Directory", "", "flask_big_red.png");
-                string path = "D:/URJC/Ing-de-videojuegos-/Iridescent/Assets/Tilesets/items/flask_big_red.png";
-                sprite = Resources.Load<Sprite>("D:/URJC/Ing-de-videojuegos-/Iridescent/Assets/Tilesets/items/flask_big_red.png");
-                Debug.Log(path);
-                Debug.Log(sprite);
+            case "Health":
+                sprite = Resources.Load<Sprite>("flask_big_red");
+                break;
+
+            case "AttackSpeed":
+                sprite = Resources.Load<Sprite>("weapon_sword_golden");
+                break;
+
+            case "MoveSpeed":
+                sprite = Resources.Load<Sprite>("flask_green");
                 break;
         }
         _dropType = type;
@@ -40,12 +47,19 @@ public abstract class AbstractDrop : IPrototypeDrop
 
     public void Create(Vector3 position)
     {
-        dmgDrop = Resources.Load<GameObject>("Assets / Prefab / DmgDropPrefab.prefab");
+        
         gameobject = new GameObject();
         gameobject.SetActive(false);
         _spriteRenderer = gameobject.AddComponent<SpriteRenderer>();
+        _spriteRenderer.sortingOrder = 2;
         gameobject.GetComponent<SpriteRenderer>().sprite = sprite;
         _position = position;
+        gameobject.transform.position = position;
+        //gameobject.transform.localScale = new Vector3(6,6,0);
+        gameobject.AddComponent<BoxCollider2D>().isTrigger=true;
+        gameobject.tag = "Drops";
+        gameobject.layer = 8;
+        gameobject.name = _dropType;
     }
 
     public bool IsAlive()
@@ -56,6 +70,7 @@ public abstract class AbstractDrop : IPrototypeDrop
     public void SetAlive(bool isalive)
     {
         alive = isalive;
+        if (!alive) die();
     }
 
     public void Render()
@@ -69,5 +84,15 @@ public abstract class AbstractDrop : IPrototypeDrop
     public string GetType()
     {
         return this._dropType;
+    }
+
+    public Vector3 GetPosition()
+    {
+        return _position;
+    }
+
+    private void die()
+    {
+        gameobject.SetActive(false);
     }
 }

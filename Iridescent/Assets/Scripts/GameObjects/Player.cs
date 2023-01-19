@@ -13,6 +13,8 @@ public class Player : GObject
 
     private Animator animator;
 
+    private int maxHP;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,6 +23,8 @@ public class Player : GObject
         player = this;
         animator = GetComponent<Animator>();
         recieveAttackComponent = new RecieveAttackComponent(this);
+        drops = GameObject.Find("DropsManager").GetComponent<PrototypeTester>();
+        maxHP = hp;
     }
 
     // Update is called once per frame
@@ -41,7 +45,7 @@ public class Player : GObject
         if (Input.GetKey(KeyCode.Space) && !onAttack)
         {
             animator.SetBool("Attack", true);
-            Debug.Log("attack");
+            //Debug.Log("attack");
             StartCoroutine(attack());
         }
     }
@@ -118,5 +122,42 @@ public class Player : GObject
                 }
             }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.gameObject.transform.position);
+
+        switch (collision.name)
+        {
+            case "Damage":
+                dmg += 5;
+                break;
+
+            case "Health":
+                maxHP += 25;
+                hp = maxHP;
+                break;
+            case "AttackSpeed":
+                attackSpeed *= 0.8f;
+                break;
+            case "MoveSpeed":
+                moveComponent.Setms(1.2f);
+                break;
+        }
+
+        drops.Pickup(collision.gameObject.transform.position);
+        Destroy(collision.gameObject);
+
+        //Vector3 range = new Vector3(3f, 3f, 0);
+        //for(int i=0; i<_drops.Length; i++)
+        //{
+        //    Vector3 dropPosition = _drops[i].GetPosition();
+        //    if (Mathf.Abs((collision.GetComponent<Player>().transform.position - dropPosition).x) < range.x &&
+        //        (Mathf.Abs((collision.GetComponent<Player>().transform.position - dropPosition).y)) < range.y)
+        //    {
+        //        Debug.Log(collision);
+        //    }
+        //}
     }
 }

@@ -21,6 +21,8 @@ public abstract class GObject : MonoBehaviour
     [SerializeField]
     protected int dmg;
 
+    protected PrototypeTester drops;
+
     public void setHP(int _hp)
     {
         hp = _hp;

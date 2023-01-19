@@ -12,6 +12,12 @@ namespace Assets.Scripts.GameObjects.Enemies
 
             base.Start();
         }
-
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                hp = 0;
+            }
+        }
     }
 }

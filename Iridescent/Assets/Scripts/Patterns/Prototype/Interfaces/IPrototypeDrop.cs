@@ -14,4 +14,6 @@ public interface IPrototypeDrop
 
     public void SetAlive(bool isalive);
 
+    public Vector3 GetPosition();
+
 }
