@@ -9,7 +9,8 @@ public class Enemy : GObject
 
     [SerializeField]
     private int attackSpeed;
-    
+
+    private bool recivedAttack;
 
     
     protected void Start()
@@ -32,13 +33,22 @@ public class Enemy : GObject
     // Update is called once per frame
     private void FixedUpdate()
     {
-        Move(this.gameObject, Time.fixedDeltaTime);
+        if (!recivedAttack)
+        {
+            Move(this.gameObject, Time.fixedDeltaTime);
+        }
+ 
         if (hp <= 0)
         {
             int random = Random.Range(1, 11);
-            if(random <4) drops.AddDrop(this.transform.position);
+            if(random <11) drops.AddDrop(this.transform.position);
             Die(this.gameObject);
         }
+    }
+
+    public void hit(bool value)
+    {
+        recivedAttack = value;
     }
 
 }

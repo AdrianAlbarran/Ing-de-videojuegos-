@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : GObject
+public class Player : GObject,ISubject<int>
 {
     public float attackSpeed;
     public bool onAttack;
@@ -16,6 +16,8 @@ public class Player : GObject
     private int maxHP;
 
     private int lastDir;
+    private int soundObserver;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -123,33 +125,37 @@ public class Player : GObject
         if (Physics2D.Raycast(transform.position, directionFacing, 1))
         {
             RaycastHit2D[] hit = new RaycastHit2D[10];
-            for (int i = 0; i < Physics2D.Raycast(transform.position, directionFacing, filtro, hit, 1); i++)
+            for (int i = 0; i < Physics2D.Raycast(transform.position, directionFacing, filtro, hit, 1.5f); i++)
             {
                 hit[i].transform.GetComponent<Enemy>().RecieveAttack(dmg);
                 enemiesHit.Add(hit[i].transform.gameObject);
+                StartCoroutine(frezeeEnemy(hit[i].transform.GetComponent<Enemy>()));
+
             }
         }
         if (Physics2D.Raycast(transform.position, diagonalUp, 0.9f))
         {
             RaycastHit2D[] hit = new RaycastHit2D[10];
-            for (int i = 0; i < Physics2D.Raycast(transform.position, diagonalUp, filtro, hit, 0.9f); i++)
+            for (int i = 0; i < Physics2D.Raycast(transform.position, diagonalUp, filtro, hit, 1.4f); i++)
             {
                 if (!enemiesHit.Contains(hit[i].transform.gameObject))
                 {
                     hit[i].transform.GetComponent<Enemy>().RecieveAttack(dmg);
                     enemiesHit.Add(hit[i].transform.gameObject);
+                    StartCoroutine(frezeeEnemy(hit[i].transform.GetComponent<Enemy>()));
                 }
             }
         }
         if (Physics2D.Raycast(transform.position, diagonalDown, 0.9f))
         {
             RaycastHit2D[] hit = new RaycastHit2D[10];
-            for (int i = 0; i < Physics2D.Raycast(transform.position, diagonalDown, filtro, hit, 0.9f); i++)
+            for (int i = 0; i < Physics2D.Raycast(transform.position, diagonalDown, filtro, hit, 1.4f); i++)
             {
                 if (!enemiesHit.Contains(hit[i].transform.gameObject))
                 {
                     hit[i].transform.GetComponent<Enemy>().RecieveAttack(dmg);
                     enemiesHit.Add(hit[i].transform.gameObject);
+                    StartCoroutine(frezeeEnemy(hit[i].transform.GetComponent<Enemy>()));
                 }
             }
         }
@@ -157,25 +163,28 @@ public class Player : GObject
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.transform.position);
-
         switch (collision.name)
         {
             case "Damage":
                 dmg += 5;
+                soundObserver = 0;
                 break;
 
             case "Health":
                 maxHP += 25;
                 hp = maxHP;
+                soundObserver = 1;
                 break;
             case "AttackSpeed":
                 attackSpeed *= 0.8f;
+                soundObserver = 2;
                 break;
             case "MoveSpeed":
                 moveComponent.Setms(1.2f);
+                soundObserver = 3;
                 break;
         }
+        NotifyObservers();
 
         drops.Pickup(collision.gameObject.transform.position);
         Destroy(collision.gameObject);
@@ -190,5 +199,32 @@ public class Player : GObject
         //        Debug.Log(collision);
         //    }
         //}
+    }
+
+
+    private List<IObserver<int>> _observers = new List<IObserver<int>>();
+    public void AddObserver(IObserver<int> observer)
+    {
+        _observers.Add(observer);
+    }
+
+    public void RemoveObserver(IObserver<int> observer)
+    {
+        _observers.Remove(observer);
+    }
+
+    public void NotifyObservers()
+    {
+        foreach (IObserver<int> observer in _observers)
+        {
+            observer?.UpdateObserver(soundObserver);
+        }
+    }
+
+    public IEnumerator frezeeEnemy(Enemy enemigo)
+    {
+        enemigo.hit(true);
+        yield return new WaitForSeconds(0.5f);
+        enemigo.hit(false);
     }
 }
