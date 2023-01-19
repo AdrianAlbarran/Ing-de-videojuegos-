@@ -28,6 +28,7 @@ public class Player : GObject,ISubject<int>
         recieveAttackComponent = new RecieveAttackComponent(this);
         drops = GameObject.Find("DropsManager").GetComponent<PrototypeTester>();
         maxHP = hp;
+        pauseMenu = GameObject.Find("GameManager").GetComponent<PauseMenu>();
     }
 
     // Update is called once per frame
@@ -48,9 +49,12 @@ public class Player : GObject,ISubject<int>
 
     public void Update()
     {
-        if (Input.GetKey(KeyCode.Space) && !onAttack)
+        if (!pauseMenu.gamePaused)
         {
-            animator.SetBool("Attack", true);
+            if (Input.GetKey(KeyCode.Space) && !onAttack)
+            {
+                animator.SetBool("Attack", true);
+            }
         }
     }
 

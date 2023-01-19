@@ -9,6 +9,8 @@ public abstract class GObject : MonoBehaviour
     public IDieComponent dieComponent;
     public IRecieveAttackComponent recieveAttackComponent;
 
+    protected PauseMenu pauseMenu;
+
     [HideInInspector]
     public Player player;
 
