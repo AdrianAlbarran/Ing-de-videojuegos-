@@ -18,4 +18,9 @@ public class EnemyMoveComponent : IMoveComponent
         var step = moveSpeed * deltaTime;
         gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, player.transform.position, step);
     }
+
+    public void Setms(float MsIncrease)
+    {
+        throw new System.NotImplementedException();
+    }
 }

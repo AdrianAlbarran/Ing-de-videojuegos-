@@ -18674,9 +18674,9 @@ MonoBehaviour:
   rb: {fileID: 0}
   player: {fileID: 0}
   attackCD: 5
-  hp: 0
-  dmg: 0
-  attackSpeed: 0
+  hp: 50
+  dmg: 5
+  attackSpeed: 2
   onAttack: 0
   enemiesHit: []
 --- !u!212 &1892369686

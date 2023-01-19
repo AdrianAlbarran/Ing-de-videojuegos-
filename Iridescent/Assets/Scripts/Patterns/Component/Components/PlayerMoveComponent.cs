@@ -21,4 +21,9 @@ public class PlayerMoveComponent : IMoveComponent
 
         rb.MovePosition(rb.position + moveDelta * MovementSpeed * deltaTime);
     }
+
+    public void Setms(float MsIncrease)
+    {
+        MovementSpeed *= MsIncrease;
+    }
 }
