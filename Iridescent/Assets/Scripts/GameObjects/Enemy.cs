@@ -1,3 +1,4 @@
+using Assets.Scripts.GameObjects;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,8 @@ public class Enemy : GObject
 
     private string type;
 
+    private EnemySpawner spawner;
+
   
 
     
@@ -25,6 +28,7 @@ public class Enemy : GObject
         dieComponent = new EnemyDieComponent();
         recieveAttackComponent = new RecieveAttackComponent(this);
         drops = GameObject.Find("DropsManager").GetComponent<PrototypeTester>();
+        spawner = GameObject.Find("GameManager").GetComponent<EnemySpawner>();
         rb = gameObject.AddComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         rb.mass = 1;
@@ -32,6 +36,7 @@ public class Enemy : GObject
         rb.angularDrag = 100;
         rb.freezeRotation = true;
         gameObject.AddComponent<BoxCollider2D>();
+
     }
 
     // Update is called once per frame
@@ -44,9 +49,11 @@ public class Enemy : GObject
  
         if (hp <= 0)
         {
+            spawner.enemiesAlive--;
             int random = Random.Range(1, 11);
             if(random <11) drops.AddDrop(this.transform.position);
             Die(this.gameObject);
+            Destroy(this.gameObject);
         }
     }
 

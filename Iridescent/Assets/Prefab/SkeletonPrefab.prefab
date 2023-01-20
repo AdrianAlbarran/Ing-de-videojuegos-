@@ -102,5 +102,5 @@ MonoBehaviour:
   attackCD: 0
   hp: 12
   dmg: 15
-  moveSpeed: 10
+  moveSpeed: 2
   attackSpeed: 13

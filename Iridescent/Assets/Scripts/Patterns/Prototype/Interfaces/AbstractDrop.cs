@@ -51,7 +51,7 @@ public abstract class AbstractDrop : IPrototypeDrop
         gameobject = new GameObject();
         gameobject.SetActive(false);
         _spriteRenderer = gameobject.AddComponent<SpriteRenderer>();
-        _spriteRenderer.sortingOrder = 2;
+        _spriteRenderer.sortingOrder = 3;
         gameobject.GetComponent<SpriteRenderer>().sprite = sprite;
         _position = position;
         gameobject.transform.position = position;

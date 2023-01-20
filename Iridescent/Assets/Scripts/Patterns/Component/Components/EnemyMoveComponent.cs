@@ -13,6 +13,8 @@ public class EnemyMoveComponent : IMoveComponent
         moveSpeed = speed;
     }
 
+    
+
     public void Move(GameObject gameObject, float deltaTime)
     {
         var step = moveSpeed * deltaTime;
@@ -20,6 +22,10 @@ public class EnemyMoveComponent : IMoveComponent
     }
 
     public void Setms(float MsIncrease)
+    {
+        throw new System.NotImplementedException();
+    }
+    public float Getms()
     {
         throw new System.NotImplementedException();
     }

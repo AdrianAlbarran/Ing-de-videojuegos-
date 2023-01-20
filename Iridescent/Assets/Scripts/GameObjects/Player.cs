@@ -5,7 +5,9 @@ using UnityEngine;
 public class Player : GObject,ISubject<int>
 {
     public float attackSpeed;
+    public float ms;
     public bool onAttack;
+    
 
     public List<GameObject> enemiesHit;
 
@@ -60,6 +62,7 @@ public class Player : GObject,ISubject<int>
                 animator.SetBool("Attack", true);
             }
         }
+        ms = moveComponent.Getms();
     }
 
     protected void changeLastDir()
@@ -188,7 +191,7 @@ public class Player : GObject,ISubject<int>
                 soundObserver = 2;
                 break;
             case "MoveSpeed":
-                moveComponent.Setms(1.2f);
+                moveComponent.Setms(1.5f);
                 soundObserver = 3;
                 break;
         }

@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMoveComponent : IMoveComponent
 {
     protected Rigidbody2D rb;
+    
     public float MovementSpeed = 5f;
 
     private float x;
@@ -24,6 +25,11 @@ public class PlayerMoveComponent : IMoveComponent
 
     public void Setms(float MsIncrease)
     {
-        MovementSpeed *= MsIncrease;
+        MovementSpeed += MsIncrease;
+    }
+
+    public float Getms()
+    {
+        return MovementSpeed;
     }
 }

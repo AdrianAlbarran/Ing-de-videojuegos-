@@ -100,7 +100,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   player: {fileID: 0}
   attackCD: 0
-  hp: 0
-  dmg: 0
-  moveSpeed: 0
+  hp: 15
+  dmg: 10
+  moveSpeed: 2
   attackSpeed: 0

@@ -10,6 +10,8 @@ public class EnemyDieComponent : IDieComponent
     }
     public void Die(GameObject gameObject)
     {
+       
         gameObject.SetActive(false);
+        
     }
 }

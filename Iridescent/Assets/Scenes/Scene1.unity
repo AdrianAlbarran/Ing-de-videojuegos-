@@ -3236,7 +3236,7 @@ TilemapCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1.5}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
 --- !u!1 &643759895
@@ -7251,6 +7251,7 @@ GameObject:
   - component: {fileID: 653246783}
   - component: {fileID: 653246782}
   - component: {fileID: 653246780}
+  - component: {fileID: 653246783}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7278,7 +7279,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653246774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.998383, y: -25.640842, z: 0.11417723}
+  m_LocalPosition: {x: 14.1, y: -29.6, z: 0.11417723}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7397,6 +7398,25 @@ MonoBehaviour:
   GeneralMixerGroup: {fileID: 24300002, guid: 487f801418dfd0e4faf774ebd8041657, type: 2}
   MusicMixerGroup: {fileID: 8104832344240918803, guid: 487f801418dfd0e4faf774ebd8041657, type: 2}
   SoundsEffectsMixerGroup: {fileID: -5009849610772321999, guid: 487f801418dfd0e4faf774ebd8041657, type: 2}
+  text: {fileID: 1539641771}
+--- !u!114 &653246783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653246774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd0d598f3007bc408e4f0ed7483eeec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabDemon: {fileID: 7565849703637122489, guid: fb11b376728d78f44bb80984a9469b14, type: 3}
+  enemyPrefabJacko: {fileID: 2358376298220705271, guid: f48f483e9c4a5f544bb79aff0c1988a9, type: 3}
+  enemyPrefabSkele: {fileID: 5318728773055800975, guid: db78f94386b189543b44505ab1301c27, type: 3}
+  enemyPrefabZombie: {fileID: 963893625108927091, guid: 164450e4185b42f449c517a04059bf90, type: 3}
+  enemiesAlive: 0
+  spawnRate: 5
 --- !u!1 &692625254
 GameObject:
   m_ObjectHideFlags: 0
@@ -7620,7 +7640,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 738777327}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6279441, y: -30.4, z: -10}
+  m_LocalPosition: {x: 0.17, y: -29.44, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7696,7 +7716,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 1892369683}
+  m_LookAt: {fileID: 0}
   m_Follow: {fileID: 1892369683}
   m_Lens:
     FieldOfView: 60
@@ -7724,7 +7744,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767191772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6279441, y: -30.4, z: -10}
+  m_LocalPosition: {x: 0.17, y: -29.44, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22554,7 +22574,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  rb: {fileID: 0}
+  player: {fileID: 0}
+  attackCD: 5
+  hp: 50
+  dmg: 5
+  attackSpeed: 2
+  ms: 0
+  onAttack: 0
+  enemiesHit: []
+--- !u!212 &1892369686
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892369682}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 3
+  m_Sprite: {fileID: -783004932, guid: 8c1ff371fa71a8948b456e3d8a41fa8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
