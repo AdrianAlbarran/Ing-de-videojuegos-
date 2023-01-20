@@ -19,7 +19,7 @@ namespace Assets.Scripts.GameObjects
         // Start is called before the first frame update
         void Start()
         {
-            enemiesAlive = 4;
+            enemiesAlive = 0;
             enemyPrefabDemon.transform.position = spawnPoint;
         }
 

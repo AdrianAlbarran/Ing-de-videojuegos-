@@ -133,10 +133,12 @@ public class Player : GObject,ISubject<int>
         filtro.useLayerMask = true;
         filtro.layerMask = 1 << LayerMask.NameToLayer("Enemies");
 
-        if (Physics2D.Raycast(transform.position, directionFacing, 1))
+        Debug.DrawRay(transform.position, directionFacing *2.3f, Color.red, 10f);
+
+        if (Physics2D.Raycast(transform.position, directionFacing, 2.3f))
         {
             RaycastHit2D[] hit = new RaycastHit2D[10];
-            for (int i = 0; i < Physics2D.Raycast(transform.position, directionFacing, filtro, hit, 1.5f); i++)
+            for (int i = 0; i < Physics2D.Raycast(transform.position, directionFacing, filtro, hit, 2.3f); i++)
             {
                 hit[i].transform.GetComponent<Enemy>().RecieveAttack(dmg);
                 enemiesHit.Add(hit[i].transform.gameObject);
@@ -144,10 +146,10 @@ public class Player : GObject,ISubject<int>
 
             }
         }
-        if (Physics2D.Raycast(transform.position, diagonalUp, 0.9f))
+        if (Physics2D.Raycast(transform.position, diagonalUp, 2.1f))
         {
             RaycastHit2D[] hit = new RaycastHit2D[10];
-            for (int i = 0; i < Physics2D.Raycast(transform.position, diagonalUp, filtro, hit, 1.4f); i++)
+            for (int i = 0; i < Physics2D.Raycast(transform.position, diagonalUp, filtro, hit, 2.1f); i++)
             {
                 if (!enemiesHit.Contains(hit[i].transform.gameObject))
                 {
@@ -157,10 +159,10 @@ public class Player : GObject,ISubject<int>
                 }
             }
         }
-        if (Physics2D.Raycast(transform.position, diagonalDown, 0.9f))
+        if (Physics2D.Raycast(transform.position, diagonalDown, 2.1f))
         {
             RaycastHit2D[] hit = new RaycastHit2D[10];
-            for (int i = 0; i < Physics2D.Raycast(transform.position, diagonalDown, filtro, hit, 1.4f); i++)
+            for (int i = 0; i < Physics2D.Raycast(transform.position, diagonalDown, filtro, hit, 2.1f); i++)
             {
                 if (!enemiesHit.Contains(hit[i].transform.gameObject))
                 {
@@ -191,7 +193,7 @@ public class Player : GObject,ISubject<int>
                 soundObserver = 2;
                 break;
             case "MoveSpeed":
-                moveComponent.Setms(1.5f);
+                moveComponent.Setms(0.5f);
                 soundObserver = 3;
                 break;
         }
@@ -199,17 +201,6 @@ public class Player : GObject,ISubject<int>
 
         drops.Pickup(collision.gameObject.transform.position);
         Destroy(collision.gameObject);
-
-        //Vector3 range = new Vector3(3f, 3f, 0);
-        //for(int i=0; i<_drops.Length; i++)
-        //{
-        //    Vector3 dropPosition = _drops[i].GetPosition();
-        //    if (Mathf.Abs((collision.GetComponent<Player>().transform.position - dropPosition).x) < range.x &&
-        //        (Mathf.Abs((collision.GetComponent<Player>().transform.position - dropPosition).y)) < range.y)
-        //    {
-        //        Debug.Log(collision);
-        //    }
-        //}
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
