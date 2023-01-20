@@ -12,6 +12,8 @@ public class Enemy : GObject
 
     private bool recivedAttack;
 
+    private string type;
+
   
 
     
