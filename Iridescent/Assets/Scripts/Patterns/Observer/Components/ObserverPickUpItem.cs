@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class ObserverPickUpItem : MonoBehaviour, IObserver<int>
 {
-    [SerializeField]
-    private AudioSource[] audios;
+
 
 
     private void Awake()
@@ -14,6 +13,25 @@ public class ObserverPickUpItem : MonoBehaviour, IObserver<int>
 
     public void UpdateObserver(int data)
     {
-        audios[data]?.Play();
+        switch (data)
+        {
+            case 0:
+                AudioManager.instance.Play("DmgUp");
+                break;
+            case 1:
+                AudioManager.instance.Play("DmgUp");
+                break;
+            case 2:
+                AudioManager.instance.Play("ASpeedUP");
+                break;
+            case 3:
+                AudioManager.instance.Play("SpeedUP");
+                break;
+            case 4:
+                AudioManager.instance.Play("PlayerScream");
+                break;
+
+
+        }
     }
 }
