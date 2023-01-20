@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -4419,11 +4419,11 @@ TextureImporter:
       Demon_133: -2131610025
       Demon_188: 1700954454
       Demon_197: 1985449430
-      Demon_37: 1632758681
-      Demon_28: -1959142181
       Demon_52: -60981404
-      Demon_154: -1173899657
+      Demon_28: -1959142181
       Demon_81: -53358894
+      Demon_154: -1173899657
+      Demon_37: 1632758681
       Demon_18: 1486837886
       Demon_189: 1434959670
       Demon_76: -1721257999

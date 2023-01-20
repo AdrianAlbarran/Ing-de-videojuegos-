@@ -10,7 +10,12 @@ namespace Assets.Scripts.GameObjects.Enemies
         {
 
             base.Start();
+            animator = GetComponent<Animator>();
         }
 
+        private void Update()
+        {
+            controlMoveAnimation(animator);
+        }
     }
 }

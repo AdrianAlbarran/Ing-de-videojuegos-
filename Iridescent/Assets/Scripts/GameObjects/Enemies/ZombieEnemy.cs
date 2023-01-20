@@ -11,7 +11,12 @@ using Assets.Scripts.GameObjects;
         {
 
             base.Start();
+            animator = GetComponent<Animator>();
         }
 
+        private void Update()
+        {
+            controlMoveAnimation(animator);
+        }
     }
 }

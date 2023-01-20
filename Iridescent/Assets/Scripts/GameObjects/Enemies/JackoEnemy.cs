@@ -11,13 +11,11 @@ namespace Assets.Scripts.GameObjects.Enemies
         {
 
             base.Start();
+            animator = GetComponent<Animator>();
         }
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                hp = 0;
-            }
+            controlMoveAnimation(animator);
         }
     }
 }

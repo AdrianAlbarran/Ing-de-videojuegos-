@@ -17,9 +17,9 @@ public class Enemy : GObject
 
     private EnemySpawner spawner;
 
+    //animacion
+    protected Animator animator;
   
-
-    
     protected void Start()
     {
         player = FindObjectOfType<Player>();
@@ -71,6 +71,25 @@ public class Enemy : GObject
         }
     }
 
+    protected void controlMoveAnimation(Animator anim)
+    {
+        float dist = transform.position.x - player.transform.position.x;
+        // si la distancia es positiva el enemigo esta a la derecha del jugador,
+        // por lo que la anim es hacia la izquierda
 
+        //ir a la izquierda
+        if (dist > 0)
+        {
+            anim.SetInteger("Horizontal", -1);
+        }
+        else if (dist < 0) // o ir a la derecha
+        {
+            anim.SetInteger("Horizontal", 1);
+        }
+        else // o estan en el mismo eje vertical, la animacion es la de idle
+        {
+            anim.SetInteger("Horizontal", 0);
+        }
+    }
 
 }
