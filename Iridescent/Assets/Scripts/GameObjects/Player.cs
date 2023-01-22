@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : GObject,ISubject<int>
 {
@@ -63,6 +64,12 @@ public class Player : GObject,ISubject<int>
             }
         }
         ms = moveComponent.Getms();
+        if (hp <= 0)
+        {
+            Die(this.gameObject);
+            Destroy(this.gameObject);
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     protected void changeLastDir()

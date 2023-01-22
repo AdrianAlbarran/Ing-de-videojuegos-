@@ -103,7 +103,7 @@ MonoBehaviour:
   attackCD: 0
   hp: 24
   dmg: 15
-  moveSpeed: 3
+  moveSpeed: 2
   attackSpeed: 0
 --- !u!95 &3542640367664543076
 Animator:

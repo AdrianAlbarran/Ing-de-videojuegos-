@@ -51,7 +51,7 @@ public class Enemy : GObject
         {
             spawner.enemiesAlive--;
             int random = Random.Range(1, 11);
-            if(random <11) drops.AddDrop(this.transform.position);
+            if(random <4) drops.AddDrop(this.transform.position);
             Die(this.gameObject);
             Destroy(this.gameObject);
         }

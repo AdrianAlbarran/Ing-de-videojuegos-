@@ -102,7 +102,7 @@ MonoBehaviour:
   player: {fileID: 0}
   attackCD: 0
   hp: 15
-  dmg: 5
+  dmg: 8
   moveSpeed: 2
   attackSpeed: 0
 --- !u!95 &2174536663362712800

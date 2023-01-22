@@ -19,7 +19,7 @@ public class ObserverPickUpItem : MonoBehaviour, IObserver<int>
                 AudioManager.instance.Play("DmgUp");
                 break;
             case 1:
-                AudioManager.instance.Play("DmgUp");
+                AudioManager.instance.Play("HealingUP");
                 break;
             case 2:
                 AudioManager.instance.Play("ASpeedUP");

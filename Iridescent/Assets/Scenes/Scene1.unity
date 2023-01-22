@@ -7324,7 +7324,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 0
-    playOnAwake: 1
+    playOnAwake: 0
     dopplerLevel: 0
     spatialBlend: 0
     volumeRolloff: 0
@@ -7333,8 +7333,8 @@ MonoBehaviour:
     source: {fileID: 0}
   - audioType: 0
     name: SpeedUP
-    clip: {fileID: 8300000, guid: 4b8fa3b539055af4482be6c53218f068, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: 20de9f4bb25e7a54285d28165e519879, type: 3}
+    volume: 0.5
     pitch: 1
     loop: 0
     playOnAwake: 0
@@ -7347,7 +7347,7 @@ MonoBehaviour:
   - audioType: 0
     name: ASpeedUP
     clip: {fileID: 8300000, guid: b301673764f722e4ab1f5852bd0b67d8, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     playOnAwake: 0
@@ -7360,10 +7360,23 @@ MonoBehaviour:
   - audioType: 0
     name: DmgUp
     clip: {fileID: 8300000, guid: 444d69f1b8aafc043aecf07a9f74f5fa, type: 3}
-    volume: 1
+    volume: 0.25
     pitch: 1
     loop: 0
     playOnAwake: 0
+    dopplerLevel: 0
+    spatialBlend: 0
+    volumeRolloff: 0
+    minDistance: 0
+    maxDistance: 0
+    source: {fileID: 0}
+  - audioType: 1
+    name: MainSong
+    clip: {fileID: 8300000, guid: 5eb25835b06b55a48952b529d51d506f, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 1
+    playOnAwake: 1
     dopplerLevel: 0
     spatialBlend: 0
     volumeRolloff: 0
@@ -7390,7 +7403,7 @@ MonoBehaviour:
   enemyPrefabSkele: {fileID: 5318728773055800975, guid: db78f94386b189543b44505ab1301c27, type: 3}
   enemyPrefabZombie: {fileID: 963893625108927091, guid: 164450e4185b42f449c517a04059bf90, type: 3}
   enemiesAlive: 0
-  spawnRate: 5
+  spawnRate: 8
 --- !u!1 &692625254
 GameObject:
   m_ObjectHideFlags: 0
@@ -22224,7 +22237,7 @@ MonoBehaviour:
   player: {fileID: 0}
   attackCD: 5
   hp: 50
-  dmg: 5
+  dmg: 8
   attackSpeed: 2
   ms: 0
   onAttack: 0
@@ -22291,7 +22304,7 @@ Animator:
   m_GameObject: {fileID: 1892369682}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: de6bf10930dee5e448fc4e101545f2f2, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8b17e91a0c61ca4439e7a240d0735082, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -22314,7 +22327,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.07039201}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -22325,7 +22338,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.125, y: 1.6876374}
+  m_Size: {x: 0.75, y: 1.2092159}
   m_EdgeRadius: 0
 --- !u!1 &1916624498
 GameObject:
